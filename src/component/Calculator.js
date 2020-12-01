@@ -6,7 +6,9 @@ class Calculator extends Component {
         num1: 0,
         num2: 0,
         sub1: 0,
-        sub2: 0
+        sub2: 0,
+        mult1: 0,
+        mult2: 0
     }
 
 
@@ -32,6 +34,15 @@ class Calculator extends Component {
             sub1: 0,
             sub2: 0,
             subTotal: substractionTotal
+        })
+    }
+
+    sumMultiplication = () => {
+        const MultiplicationTotal = parseInt(this.state.mult1) * parseInt(this.state.mult2)
+        this.setState({
+            mult1: 0,
+            mult2: 0,
+            multTotal: MultiplicationTotal
         })
     }
 
@@ -80,6 +91,28 @@ class Calculator extends Component {
                 <h3>Substraction results go here!</h3>
                 <p>{this.state.subTotal}</p>
             </div>
+
+            <div className="Multiplication">
+                
+                
+                <input type="number"
+                    name="mult1"
+                    placeholder="Enter your first number"
+                    value={this.state.mult1}
+                    onChange={ (e) => this.setNum(e, 'mult1') }
+                />
+                <span>*</span>
+                <input type="number"
+                    name="mult2"
+                    placeholder="Enter your first number"
+                    value={this.state.mult2}
+                    onChange={ (e) => this.setNum(e, 'mult2') }
+                />
+                <button onClick={this.sumMultiplication}>=</button>
+                <h3>Multiplication results go here!</h3>
+                <p>{this.state.multTotal}</p>
+            </div>
+
           </div> 
         )
     }
