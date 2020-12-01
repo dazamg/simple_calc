@@ -8,7 +8,9 @@ class Calculator extends Component {
         sub1: 0,
         sub2: 0,
         mult1: 0,
-        mult2: 0
+        mult2: 0,
+        div1: 0,
+        div2: 0
     }
 
 
@@ -43,6 +45,15 @@ class Calculator extends Component {
             mult1: 0,
             mult2: 0,
             multTotal: MultiplicationTotal
+        })
+    }
+
+    sumDivision = () => {
+        const divisionTotal = parseInt(this.state.div1) / parseInt(this.state.div2)
+        this.setState({
+            div1: 0,
+            div2: 0,
+            divTotal: divisionTotal
         })
     }
 
@@ -113,7 +124,31 @@ class Calculator extends Component {
                 <p>{this.state.multTotal}</p>
             </div>
 
+
+            <div className="division">
+                
+                
+                <input type="number"
+                    name="div1"
+                    placeholder="Enter your first number"
+                    value={this.state.div1}
+                    onChange={ (e) => this.setNum(e, 'div1') }
+                />
+                <span>*</span>
+                <input type="number"
+                    name="div2"
+                    placeholder="Enter your first number"
+                    value={this.state.div2}
+                    onChange={ (e) => this.setNum(e, 'div2') }
+                />
+                <button onClick={this.sumDivision}>=</button>
+                <h3>Division results go here!</h3>
+                <p>{this.state.divTotal}</p>
+            </div>
+
+
           </div> 
+          
         )
     }
 
